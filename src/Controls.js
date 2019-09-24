@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Paper, Typography, Slider } from "@material-ui/core";
+import { Box, Button, Paper, Typography, Slider } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import { DatePicker } from "@material-ui/pickers";
 

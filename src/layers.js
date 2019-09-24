@@ -21,18 +21,7 @@ export const landCover = {
   }
 };
 
-export const generateLayers = ({ sunrise, sunset }, date, data) => {
-  const timeOfDay = date > sunrise && date < sunset ? "day" : "night";
-
-  // attempting to scale the base layer with the time (dark to light in am, light to dark in pm).
-  // const midday = new Date((sunrise.getTime() + sunset.getTime()) / 2);
-  // if (date < midday) {
-  //   const timeBetween = midday.getTime() - sunrise.getTime();
-  //   const timeSinceSunrise = date.getTime() - sunrise.getTime();
-  //   const percentageThrough = timeSinceSunrise / timeBetween;
-  //   const opacity = parseInt(0.9 * 255 * percentageThrough);
-  // }
-
+export const generateLayers = (data, timeOfDay) => {
   return [
     new GeoJsonLayer({
       id: "buildings",
@@ -46,7 +35,7 @@ export const generateLayers = ({ sunrise, sunset }, date, data) => {
         return timeOfDay === "day" ? [255, 255, 255] : [74, 80, 87];
       },
       material,
-      _shadows: true
+      _shadows: timeOfDay === "day"
     })
   ];
 };

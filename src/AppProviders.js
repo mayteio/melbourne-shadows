@@ -7,6 +7,7 @@ import { ThemeProvider as StyledThemeProvider } from "styled-components";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 import { MapProvider } from "./common/MapContext";
+import { DateProvider } from "./DateContext";
 
 const theme = createMuiTheme();
 
@@ -15,7 +16,9 @@ export default function AppProviders({ children }) {
     <ThemeProvider theme={theme}>
       <StyledThemeProvider theme={theme}>
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
-          <MapProvider>{children}</MapProvider>
+          <MapProvider>
+            <DateProvider>{children}</DateProvider>
+          </MapProvider>
         </MuiPickersUtilsProvider>
       </StyledThemeProvider>
     </ThemeProvider>
