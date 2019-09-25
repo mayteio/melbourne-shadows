@@ -3,6 +3,7 @@ import { useAnimationFrame } from "./useAnimationFrame";
 import { useDateState, useDateUpdate } from "./DateContext";
 import { useDeck } from "./useDeck";
 import { Box, Typography, Button, Zoom } from "@material-ui/core";
+import { animated, useSpring } from "react-spring";
 
 export default function IdleScreen({ idle, onStart }) {
   const date = useDateState();
@@ -15,8 +16,15 @@ export default function IdleScreen({ idle, onStart }) {
     setDate(new Date(timestamp + 60000 * 2));
   }, idle);
 
+  const props = useSpring({
+    opacity: idle ? 1 : 0,
+    transform: idle
+      ? "translate3d(0px,0px,0px)"
+      : "translate3d(-400px,24px,0px)"
+  });
+
   return (
-    <Zoom in={idle}>
+    <animated.div style={props}>
       <Box position="absolute" zIndex={9999} top={24} left={24} width={600}>
         <Box bgcolor="white" p={3} borderRadius={4} boxShadow={1}>
           <Typography variant="h3">
@@ -38,6 +46,6 @@ export default function IdleScreen({ idle, onStart }) {
           </Button>
         </Box>
       </Box>
-    </Zoom>
+    </animated.div>
   );
 }

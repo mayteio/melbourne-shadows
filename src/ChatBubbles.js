@@ -76,7 +76,7 @@ export default function ChatBubbles({ idle }) {
                 </Typography>
               </>
             ),
-            height: 132
+            height: 152
           },
           {
             key: 7,
@@ -155,7 +155,7 @@ export default function ChatBubbles({ idle }) {
                 </Typography>
               </>
             ),
-            height: 172
+            height: 192
           },
           {
             key: 14,
@@ -179,15 +179,9 @@ export default function ChatBubbles({ idle }) {
                     </Typography>
                   </li>
                 </ul>
-                <Typography variant="body2">
-                  Although allowable shadow is only calculated for sites
-                  abutting a park, the extent of overshadowing that this allows
-                  applies to all sites, not just to those sites immediately
-                  abutting a park.
-                </Typography>
               </>
             ),
-            height: 272
+            height: 212
           },
           {
             key: 15,
@@ -305,28 +299,35 @@ export default function ChatBubbles({ idle }) {
       {
         key: 1,
         message: (
-          <Typography variant="body2">
-            As our city grows, we want to ensure we preserve warm sunlight
-            during winter months.
-          </Typography>
+          <>
+            <Typography variant="h6">
+              Amendment C278: Sunlight to public parks
+            </Typography>
+            <Typography variant="subtitle1">
+              Protecting winter sunlight in our parks with new planning
+              controls.
+            </Typography>
+          </>
         ),
-        height: 80
+        height: 192
       },
       {
         key: 2,
         message: (
           <Typography variant="body2">
-            The sunlight in public spaces amendment means that developers can't
-            take this precious sun away from us.
+            Parks in Southbank and the central city have existing planning
+            controls protecting them from overshadowing in winter. We want to
+            extend this to all City of Melbourne parks, which currently do not
+            have the same level of protection.
           </Typography>
         ),
-        height: 80
+        height: 140
       },
       {
         key: 3,
         message: (
           <Typography variant="body2">
-            There are three types of parks this affects. Check them out below.
+            There are three types of overshadowing protections for parks.
           </Typography>
         ),
         height: 80

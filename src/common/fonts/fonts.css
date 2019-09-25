@@ -1,0 +1,22 @@
+@font-face {
+  font-family: "Gotham";
+  src: url("./GothamHTF-Book.woff2") format("woff2"),
+    url("./GothamHTF-Book.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("./GothamHTF-Bold.woff2") format("woff2"),
+    url("./GothamHTF-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "CoM";
+  src: url("./CoM.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}

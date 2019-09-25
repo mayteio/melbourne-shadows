@@ -1,6 +1,5 @@
 import React from "react";
 
-import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 import { ThemeProvider as StyledThemeProvider } from "styled-components";
 
@@ -9,7 +8,7 @@ import DateFnsUtils from "@date-io/date-fns";
 import { MapProvider } from "./common/MapContext";
 import { DateProvider } from "./DateContext";
 
-const theme = createMuiTheme();
+import { theme } from "./common/theme";
 
 export default function AppProviders({ children }) {
   return (

@@ -13,7 +13,8 @@ export default function SunAndMoon({ date, idle, timeOfDay }) {
   const now = date.getTime();
 
   const showProps = useSpring({
-    transform: `translateY(${idle ? "0px" : "128px"})`
+    // transform: `translateY(${idle ? "0px" : "128px"})`,
+    backgroundColor: timeOfDay === "night" ? "#23242b" : "#fff"
   });
 
   const rotateProps = useSpring({
@@ -28,7 +29,6 @@ export default function SunAndMoon({ date, idle, timeOfDay }) {
       position="fixed"
       right={64}
       bottom={-128}
-      bgcolor={timeOfDay === "day" ? "white" : "#08090b"}
       borderRadius={128}
       zIndex={9999}
       boxShadow={2}
@@ -42,8 +42,8 @@ export default function SunAndMoon({ date, idle, timeOfDay }) {
         top={100}
       >
         <Typography
-          variant="h6"
-          style={{ color: timeOfDay === "day" ? "#08090b" : "#fff" }}
+          variant="body1"
+          style={{ color: timeOfDay === "day" ? "#23242b" : "#fff" }}
         >
           {format(date, "hh:mm a")}
         </Typography>
