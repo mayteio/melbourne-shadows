@@ -8,6 +8,8 @@ import IdleScreen from "./IdleScreen";
 import { useMapRef, DEFAULT_VIEW_STATE } from "./common/MapContext";
 import { setMapStyle } from "./setMapStyle";
 import ChatBubbles from "./ChatBubbles";
+import Header from "./common/Header";
+import Branding from "./common/Branding";
 
 const { latitude, longitude } = DEFAULT_VIEW_STATE;
 
@@ -32,6 +34,12 @@ function App() {
 
   return (
     <Box display="flex" flexDirection="column" height={1}>
+      {/* <Header>
+        <Branding
+          theme="dark"
+          title="Amendment C278: Sunlight to public parks"
+        />
+      </Header> */}
       <Box position="relative" flexGrow={1}>
         <Map
           layers={layers}

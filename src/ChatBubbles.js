@@ -158,32 +158,6 @@ export default function ChatBubbles({ idle }) {
             height: 192
           },
           {
-            key: 14,
-            message: (
-              <>
-                <Typography variant="body2">
-                  'Allowable' shadow is the shadow from a site abutting a park
-                  that would be cast by a street wall built:
-                </Typography>
-                <ul>
-                  <li>
-                    <Typography variant="body2">
-                      to the street wall height nominated in the planning
-                      scheme; or
-                    </Typography>
-                  </li>
-                  <li>
-                    <Typography variant="body2">
-                      to the overall building height nominated in the planning
-                      scheme.
-                    </Typography>
-                  </li>
-                </ul>
-              </>
-            ),
-            height: 212
-          },
-          {
             key: 15,
             message: (
               <img
