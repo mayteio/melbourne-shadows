@@ -17,27 +17,26 @@ export default function IdleScreen({ idle, onStart }) {
 
   return (
     <Zoom in={idle}>
-      <Box
-        position="absolute"
-        zIndex={9999}
-        top={0}
-        left={0}
-        bottom={0}
-        right={0}
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
-        justifyContent="center"
-      >
-        <Typography variant="h2" align="center">
-          How does this affect you?
-        </Typography>
-        <Typography variant="body2" align="center">
-          Winter sun is important. Find out what we're doing to preserve it.
-        </Typography>
-        <Button variant="contained" color="primary" onClick={onStart}>
-          Find out
-        </Button>
+      <Box position="absolute" zIndex={9999} top={24} left={24} width={600}>
+        <Box bgcolor="white" p={3} borderRadius={4} boxShadow={1}>
+          <Typography variant="h3">
+            How does this amendment affect you?
+          </Typography>
+          <Typography variant="subtitle1">
+            Winter sun is important. Find out what we're doing to preserve it.
+          </Typography>
+        </Box>
+        <Box mt={1}>
+          <Button
+            variant="contained"
+            color="primary"
+            size="large"
+            onClick={onStart}
+            style={{ fontSize: 32 }}
+          >
+            Find out
+          </Button>
+        </Box>
       </Box>
     </Zoom>
   );

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Box } from "@material-ui/core";
+import React from "react";
+import { Box, Typography } from "@material-ui/core";
 import { startOfDay, format } from "date-fns";
 import { useSpring, animated } from "react-spring";
 
@@ -8,7 +8,7 @@ import sun from "./assets/sun.svg";
 
 const MS_IN_DAY = 86400000;
 
-export default function SunAndMoon({ date, idle }) {
+export default function SunAndMoon({ date, idle, timeOfDay }) {
   const start = startOfDay(date).getTime();
   const now = date.getTime();
 
@@ -16,17 +16,8 @@ export default function SunAndMoon({ date, idle }) {
     transform: `translateY(${idle ? "0px" : "128px"})`
   });
 
-  const [revolutions, setRevolutions] = useState(0);
-
-  useEffect(() => {
-    if (format(date, "hh:mm:ss") === "23:59:00") setRevolutions(r => r + 1);
-  }, [date]);
-
   const rotateProps = useSpring({
-    transform: `rotate(${(
-      ((now - start) / MS_IN_DAY) * 360 +
-      360 * revolutions
-    ).toFixed(2)}deg)`
+    transform: `rotate(${(((now - start) / MS_IN_DAY) * 360).toFixed(2)}deg)`
   });
 
   return (
@@ -37,10 +28,26 @@ export default function SunAndMoon({ date, idle }) {
       position="fixed"
       right={64}
       bottom={-128}
-      bgcolor="white"
+      bgcolor={timeOfDay === "day" ? "white" : "#08090b"}
       borderRadius={128}
       zIndex={9999}
+      boxShadow={2}
     >
+      <Box
+        width={1}
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        position="absolute"
+        top={100}
+      >
+        <Typography
+          variant="h6"
+          style={{ color: timeOfDay === "day" ? "#08090b" : "#fff" }}
+        >
+          {format(date, "hh:mm a")}
+        </Typography>
+      </Box>
       <AnimatedBox position="absolute" top={16} left={96} style={rotateProps}>
         <Box width={64} height={64}>
           <img alt="moon" src={moon} />

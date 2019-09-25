@@ -7,6 +7,7 @@ import { useDateState, useSunTimes } from "./DateContext";
 import IdleScreen from "./IdleScreen";
 import { useMapRef, DEFAULT_VIEW_STATE } from "./common/MapContext";
 import { setMapStyle } from "./setMapStyle";
+import ChatBubbles from "./ChatBubbles";
 
 const { latitude, longitude } = DEFAULT_VIEW_STATE;
 
@@ -24,6 +25,7 @@ function App() {
   const date = useDateState();
   const { timeOfDay } = useSunTimes({ date, latitude, longitude });
   const mapRef = useMapRef();
+  window.mapRef = mapRef;
   useEffect(() => {
     setMapStyle(mapRef.current, timeOfDay);
   }, [timeOfDay, mapRef]);
@@ -36,8 +38,9 @@ function App() {
           lighting={lightingRef.current}
           mapStyle={MAP_STYLE}
         />
-        <SunAndMoon idle={idle} date={date} />
+        <SunAndMoon idle={idle} date={date} timeOfDay={timeOfDay} />
         <IdleScreen idle={idle} onStart={onStart} />
+        <ChatBubbles idle={idle} />
       </Box>
     </Box>
   );
