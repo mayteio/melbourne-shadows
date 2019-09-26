@@ -27,7 +27,7 @@ export const generateLayers = (data, timeOfDay) => {
       id: "buildings",
       data,
       extruded: true,
-      wireframe: false,
+      wireframe: true,
       opacity: 1,
       getElevation: f => f.properties.footprint_extrusion,
       getFillColor: d => {

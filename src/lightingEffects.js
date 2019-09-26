@@ -7,7 +7,7 @@ import {
 
 const ambientLight = new AmbientLight({
   color: [255, 255, 255],
-  intensity: 1.0
+  intensity: 2.0
 });
 
 export function generateLighting(date) {
