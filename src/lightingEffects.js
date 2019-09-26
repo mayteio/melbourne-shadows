@@ -7,21 +7,24 @@ import {
 
 const ambientLight = new AmbientLight({
   color: [255, 255, 255],
-  intensity: 5
+  intensity: 1.0
 });
 
 export function generateLighting(date) {
   const dirLight = new SunLight({
     timestamp: date.getTime(),
     color: [255, 255, 255],
-    intensity: 2.0,
+    intensity: 1.0,
     _shadow: true
   });
 
-  return new LightingEffect({
+  const lf = new LightingEffect({
     ambientLight,
     dirLight
   });
+
+  lf.shadowColor = [0, 0, 0, 0.5];
+  return lf;
 }
 
 export const material = new PhongMaterial({

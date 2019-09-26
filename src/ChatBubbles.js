@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function ChatBubbles({ idle }) {
+export default React.memo(function ChatBubbles({ idle }) {
   // helper to remove old messages before adding new ones
   const updateMessages = messages => {
     setMessages([]);
@@ -378,7 +378,7 @@ export default function ChatBubbles({ idle }) {
       ))}
     </Box>
   );
-}
+});
 
 const TypeBox = ({ primary, secondary, color = "", ...rest }) => (
   <Paper style={{ marginRight: 8 }} {...rest}>

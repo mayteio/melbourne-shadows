@@ -34,7 +34,7 @@ export const generateLayers = (data, timeOfDay) => {
         if (d.properties.isFloor) return [0, 0, 0, 0];
         return timeOfDay === "day" ? [255, 255, 255] : [74, 80, 87];
       },
-      material,
+      // material,
       _shadows: timeOfDay === "day"
     })
   ];
