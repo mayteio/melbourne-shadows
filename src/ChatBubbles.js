@@ -33,19 +33,17 @@ export default function ChatBubbles({ idle }) {
   const goBack = useCallback(() => {
     setMessages([]);
     setTimeout(() => {
-      setViewstate(
-        vs => ({
-          ...vs,
-          ...DEFAULT_VIEW_STATE,
-          transitionInterpolator: new FlyToInterpolator(),
-          transitionDuration: 2500
-        }),
-        750
-      );
-      setTimeout(() => {
-        setMessages(initialMessages);
-      }, 3500);
-    }, []);
+      setViewstate(vs => ({
+        ...vs,
+        ...DEFAULT_VIEW_STATE,
+        transitionInterpolator: new FlyToInterpolator(),
+        transitionDuration: 2500
+      }));
+    }, 500);
+    setTimeout(() => {
+      setMessages(initialMessages);
+    }, 3000);
+    // eslint-disable-next-line
   }, [setViewstate]);
 
   const typeMessages = useCallback(
@@ -386,7 +384,13 @@ export default function ChatBubbles({ idle }) {
 
 const TypeBox = ({ primary, secondary, color = "", ...rest }) => (
   <Paper style={{ marginRight: 8 }} {...rest}>
-    <Box p={2} borderRadius={4} width={180} bgcolor={color}>
+    <Box
+      p={2}
+      borderRadius={4}
+      width={180}
+      bgcolor={color}
+      style={{ cursor: "pointer" }}
+    >
       <Typography style={{ color: "#fff" }} variant="h5">
         {primary}
       </Typography>

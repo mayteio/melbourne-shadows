@@ -23,7 +23,7 @@ export default function ExamplePark({ viewport }) {
         transitionInterpolator: new FlyToInterpolator(),
         transitionDuration: 2500
       }));
-    }, 500);
+    }, 750);
     return () => {};
   }, [setViewstate, setDate, viewport]);
 
@@ -51,7 +51,7 @@ export default function ExamplePark({ viewport }) {
 
     setTimeout(() => {
       setAligning(true);
-    }, 3000);
+    }, 3250);
   }, [date, direction, target]);
 
   // animated to the closest 10am

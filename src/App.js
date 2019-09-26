@@ -8,8 +8,6 @@ import IdleScreen from "./IdleScreen";
 import { useMapRef, DEFAULT_VIEW_STATE } from "./common/MapContext";
 import { setMapStyle } from "./setMapStyle";
 import ChatBubbles from "./ChatBubbles";
-import Header from "./common/Header";
-import Branding from "./common/Branding";
 
 const { latitude, longitude } = DEFAULT_VIEW_STATE;
 
@@ -20,9 +18,9 @@ function App() {
   const { layers, lightingRef } = useDeck();
 
   const [idle, setIdle] = useState(true);
-  const onStart = () => {
+  const onStart = React.useCallback(() => {
     setIdle(false);
-  };
+  }, [setIdle]);
 
   const date = useDateState();
   const { timeOfDay } = useSunTimes({ date, latitude, longitude });

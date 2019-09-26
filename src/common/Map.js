@@ -8,6 +8,49 @@ import "mapbox-gl/dist/mapbox-gl.css";
 export default function Map({ layers, lighting, mapStyle, children }) {
   const [viewstate, setViewstate] = useViewstate();
 
+  const bounds = [
+    [144.9, -37.85], // Southwest coordinates
+    [144.99, -37.78] // Northeast coordinates
+  ];
+  const setViewStateInBounds = vsFn => {
+    setViewstate(vs => {
+      /**
+       * Can pass either a function or an object. You'd
+       * pass a function to get access to the previous
+       * viewState.
+       */
+      const nextViewState = typeof vsFn === "function" ? vsFn(vs) : vsFn;
+      if (bounds) {
+        let { latitude, longitude, ...rest } = nextViewState;
+        const [
+          [minLongitude, minLatitude],
+          [maxLongitude, maxLatitude]
+        ] = bounds;
+
+        if (latitude < minLatitude) {
+          latitude = minLatitude;
+        } else if (latitude > maxLatitude) {
+          latitude = maxLatitude;
+        }
+
+        if (longitude < minLongitude) {
+          longitude = minLongitude;
+        } else if (longitude > maxLongitude) {
+          longitude = maxLongitude;
+        }
+
+        return {
+          ...vs,
+          ...rest,
+          latitude,
+          longitude
+        };
+      } else {
+        return nextViewState;
+      }
+    });
+  };
+
   const mapRef = useMapRef();
   const deckRef = React.useRef();
 
@@ -23,9 +66,9 @@ export default function Map({ layers, lighting, mapStyle, children }) {
     <DeckGL
       layers={layers}
       effects={[lighting]}
-      controller={{ touchRotate: true }}
+      controller={{ touchRotate: true, minZoom: 14 }}
       viewState={viewstate}
-      onViewStateChange={v => setViewstate(v.viewState)}
+      onViewStateChange={v => setViewStateInBounds(v.viewState)}
       ref={ref => (deckRef.current = ref && ref.deck)}
       onWebGLInitialized={gl => gl && setGl(gl)}
     >

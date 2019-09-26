@@ -2,10 +2,10 @@ import React from "react";
 import { useAnimationFrame } from "./useAnimationFrame";
 import { useDateState, useDateUpdate } from "./DateContext";
 import { useDeck } from "./useDeck";
-import { Box, Typography, Button, Zoom } from "@material-ui/core";
+import { Box, Typography, Button } from "@material-ui/core";
 import { animated, useSpring } from "react-spring";
 
-export default function IdleScreen({ idle, onStart }) {
+export default React.memo(function IdleScreen({ idle, onStart }) {
   const date = useDateState();
   const setDate = useDateUpdate();
   const { lightingRef } = useDeck();
@@ -48,4 +48,4 @@ export default function IdleScreen({ idle, onStart }) {
       </Box>
     </animated.div>
   );
-}
+});
