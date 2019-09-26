@@ -273,33 +273,31 @@ export default function ChatBubbles({ idle }) {
         message: (
           <>
             <Typography variant="h6">
-              Amendment C278: Sunlight to public parks
+              Sunlight to public parks is great news for you.
             </Typography>
             <Typography variant="subtitle1">
-              Protecting winter sunlight in our parks with new planning
-              controls.
+              Parks in Southbank and the central city have existing planning
+              controls protecting them from overshadowing in winter.
             </Typography>
           </>
         ),
-        height: 192
+        height: 222
       },
       {
         key: 2,
         message: (
           <Typography variant="body2">
-            Parks in Southbank and the central city have existing planning
-            controls protecting them from overshadowing in winter. We want to
-            extend this to all City of Melbourne parks, which currently do not
-            have the same level of protection.
+            We want to extend this to all City of Melbourne parks, which
+            currently do not have the same level of protection.
           </Typography>
         ),
-        height: 140
+        height: 100
       },
       {
         key: 3,
         message: (
           <Typography variant="body2">
-            There are three types of overshadowing protections for parks.
+            There are three types of overshadowing protections for parks:
           </Typography>
         ),
         height: 80

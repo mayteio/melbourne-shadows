@@ -28,10 +28,10 @@ export default React.memo(function IdleScreen({ idle, onStart }) {
       <Box position="absolute" zIndex={9999} top={24} left={24} width={600}>
         <Box bgcolor="white" p={3} borderRadius={4} boxShadow={1}>
           <Typography variant="h3">
-            How does this amendment affect you?
+            Amendment C278: Sunlight to public parks
           </Typography>
           <Typography variant="subtitle1">
-            Winter sun is important. Find out what we're doing to preserve it.
+            Protecting winter sunlight in our parks with new planning controls.
           </Typography>
         </Box>
         <Box mt={1}>
@@ -42,7 +42,7 @@ export default React.memo(function IdleScreen({ idle, onStart }) {
             onClick={onStart}
             style={{ fontSize: 32 }}
           >
-            Find out
+            How am I affected?
           </Button>
         </Box>
       </Box>
