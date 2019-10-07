@@ -5,7 +5,7 @@ import { useDeck } from "./useDeck";
 import { Box, Typography, Button } from "@material-ui/core";
 import { animated, useSpring } from "react-spring";
 
-export default React.memo(function IdleScreen({ idle, onStart }) {
+export default React.memo(function IdleScreen({ idle, timeOfDay, onStart }) {
   const date = useDateState();
   const setDate = useDateUpdate();
   const { lightingRef } = useDeck();
@@ -13,7 +13,7 @@ export default React.memo(function IdleScreen({ idle, onStart }) {
   useAnimationFrame(() => {
     const timestamp = date.getTime();
     lightingRef.current.directionalLights[0].timestamp = timestamp;
-    setDate(new Date(timestamp + 60000 * 2));
+    setDate(new Date(timestamp + 60000 * (timeOfDay === "night" ? 12 : 1)));
   }, idle);
 
   const props = useSpring({

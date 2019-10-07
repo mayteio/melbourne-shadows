@@ -1,5 +1,5 @@
 import { GeoJsonLayer } from "@deck.gl/layers";
-import { material } from "./lightingEffects";
+// import { material } from "./lightingEffects";
 
 export const landCover = {
   type: "Feature",

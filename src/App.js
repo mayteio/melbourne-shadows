@@ -8,6 +8,9 @@ import IdleScreen from "./IdleScreen";
 import { useMapRef, DEFAULT_VIEW_STATE } from "./common/MapContext";
 import { setMapStyle } from "./setMapStyle";
 import ChatBubbles from "./ChatBubbles";
+import Header from "./common/Header";
+import Branding from "./common/Branding";
+import { useIdle } from "use-idle";
 
 const { latitude, longitude } = DEFAULT_VIEW_STATE;
 
@@ -28,16 +31,25 @@ function App() {
   window.mapRef = mapRef;
   useEffect(() => {
     setMapStyle(mapRef.current, timeOfDay);
-  }, [timeOfDay, mapRef]);
+    if (timeOfDay === "night") {
+      lightingRef.current.directionalLights[0].intensity = 0;
+      lightingRef.current.ambientLight.intensity = 1;
+    } else {
+      lightingRef.current.directionalLights[0].intensity = 1;
+      lightingRef.current.ambientLight.intensity = 2;
+    }
+  }, [timeOfDay, mapRef, lightingRef]);
+
+  const isIdle = useIdle({ timeToIdle: 3 * 60 * 1000 });
+  useEffect(() => {
+    if (isIdle) setIdle(true);
+  }, [isIdle]);
 
   return (
     <Box display="flex" flexDirection="column" height={1}>
-      {/* <Header>
-        <Branding
-          theme="dark"
-          title="Amendment C278: Sunlight to public parks"
-        />
-      </Header> */}
+      <Header>
+        <Branding theme="dark" />
+      </Header>
       <Box position="relative" flexGrow={1}>
         <Map
           layers={layers}
@@ -45,7 +57,7 @@ function App() {
           mapStyle={MAP_STYLE}
         />
         <SunAndMoon idle={idle} date={date} timeOfDay={timeOfDay} />
-        <IdleScreen idle={idle} onStart={onStart} />
+        <IdleScreen idle={idle} onStart={onStart} timeOfDay={timeOfDay} />
         <ChatBubbles idle={idle} />
       </Box>
     </Box>

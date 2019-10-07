@@ -20,16 +20,17 @@ export default React.memo(function Branding({
   return (
     <BrandingStyle shade={theme}>
       <Box
+        bgcolor="#080809"
         display="flex"
         flexDirection={stacked ? "column" : { xs: "column", sm: "row" }}
-        alignItems={stacked ? "baseline" : {xs: "baseline", sm: "center"}}
+        alignItems={stacked ? "baseline" : { xs: "baseline", sm: "center" }}
         {...props}
       >
         <Box
           className="primary-logo"
-          height={{ xs: 35, md: 42 }}
+          height={{ xs: 35 }}
+          p={{ xs: 1, md: 2 }}
           width="auto"
-          p={{xs: 1, md: 1.4}}
         >
           <Logo
             // compact={!isLarge}
@@ -38,12 +39,12 @@ export default React.memo(function Branding({
         </Box>
         <Box
           className="secondary-logo"
-          height={{ xs: 35, md: 42 }}
+          height={{ xs: 35 }}
           width={stacked ? "auto" : { xs: "100vw", sm: "auto" }}
           display="flex"
-          alignItems={{xs: "baseline", md: "center"}}
-          bgcolor={stacked ? "white" : {xs: "grey600", sm: 'transparent'}}
-          p={{xs: 1.1, md: 1.4}}
+          alignItems={{ xs: "baseline", md: "center" }}
+          bgcolor={stacked ? "white" : { xs: "grey600", sm: "transparent" }}
+          p={{ xs: 1.1, md: 2 }}
         >
           {title && (
             <Title large={isLarge} shade={theme}>
@@ -58,7 +59,7 @@ export default React.memo(function Branding({
 });
 
 const getThemeColor = ({ theme, shade }) =>
-  shade === "light" ? theme.palette.grey800 : theme.palette.grey100;
+  shade === "light" ? theme.palette.gray[800] : theme.palette.gray[100];
 
 const Title = styled.h1`
   font-family: "CoM", "Helvetica Neue", Arial, Helvetica, sans-serif;

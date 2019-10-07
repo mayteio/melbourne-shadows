@@ -28,8 +28,8 @@ export function generateLighting(date) {
 }
 
 export const material = new PhongMaterial({
-  ambient: 0.1,
-  diffuse: 0.2,
+  ambient: 0.4,
+  diffuse: 0.3,
   shininess: 32,
   specularColor: [255, 255, 255]
 });

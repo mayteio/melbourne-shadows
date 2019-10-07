@@ -8,12 +8,11 @@ import sun from "./assets/sun.svg";
 
 const MS_IN_DAY = 86400000;
 
-export default function SunAndMoon({ date, idle, timeOfDay }) {
+export default function SunAndMoon({ date, timeOfDay }) {
   const start = startOfDay(date).getTime();
   const now = date.getTime();
 
   const showProps = useSpring({
-    // transform: `translateY(${idle ? "0px" : "128px"})`,
     backgroundColor: timeOfDay === "night" ? "#23242b" : "#fff"
   });
 

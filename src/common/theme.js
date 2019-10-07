@@ -15,7 +15,7 @@ const fontFamily = [
   '"Segoe UI Symbol"'
 ].join(",");
 
-const headingFontFamily = `"CoM", ${fontFamily}`;
+// const headingFontFamily = `"CoM", ${fontFamily}`;
 
 /**
  * Primary colour palette is dark background.
