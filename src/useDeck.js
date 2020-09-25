@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-import { generateLighting } from "./lightingEffects";
-import { generateLayers, landCover } from "./layers";
-import { useDateState, useSunTimes } from "./DateContext";
-import { useViewstateState } from "./common/MapContext";
+import { generateLighting } from './lightingEffects';
+import { generateLayers, landCover } from './layers';
+import { useDateState, useSunTimes } from './DateContext';
+import { useViewstateState } from './common/MapContext';
 
 const lighting = generateLighting(new Date());
 
@@ -13,8 +13,8 @@ export function useDeck() {
   React.useEffect(() => {
     const getData = async () => {
       const res = await fetch(
-        "https://city-dna.s3-ap-southeast-2.amazonaws.com/building_footprints.json"
-      ).then(res => res.json());
+        'https://citydna-2019-datasets.s3-ap-southeast-2.amazonaws.com/building_footprints.json'
+      ).then((res) => res.json());
       res.features.push(landCover);
       setData(res);
     };
